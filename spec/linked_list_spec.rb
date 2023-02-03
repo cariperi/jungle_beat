@@ -25,12 +25,24 @@ describe LinkedList do
       expect(list.head).not_to eq(nil)
     end
 
-    it 'creates a new node and assigns it to the head' do
+    it 'inserts a new node as the head if list is empty' do
       list = LinkedList.new
       list.append('doop')
 
       expect(list.head).to be_a Node
       expect(list.head.data).to eq('doop')
+    end
+
+    it 'inserts a new node at the end of the list if list is not empty' do
+      list = LinkedList.new
+      list.append('doop')
+      list.append('deep')
+      list.append('plop')
+
+      expect(list.head.data).to eq('doop')
+      expect(list.head.next_node).to be_a Node
+      expect(list.head.next_node.data).to eq('deep')
+      expect(list.head.next_node.next_node.data).to eq('plop')
     end
 
     it 'returns the data that was added to the list' do
@@ -65,4 +77,3 @@ describe LinkedList do
     end
   end
 end
-require 'pry'; binding.pry
