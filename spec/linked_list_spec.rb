@@ -54,4 +54,15 @@ describe LinkedList do
       expect(list.count).to eq(1)
     end
   end
+
+  describe '#to_string' do
+    it 'returns a string of all data elements' do
+      list = LinkedList.new
+      list.append('doop')
+
+      expect(list.to_string).to be_a String
+      expect(list.to_string).to eq('doop')
+    end
+  end
 end
+require 'pry'; binding.pry
