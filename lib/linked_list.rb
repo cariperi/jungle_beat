@@ -19,4 +19,14 @@ class LinkedList
     end
     counter
   end
+
+  def to_string
+    current_node = @head
+    data_strings = []
+    until current_node == nil
+      data_strings << current_node.data
+      current_node = current_node.next_node
+    end
+    data_strings.join(" ")
+  end
 end
