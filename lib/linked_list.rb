@@ -1,5 +1,5 @@
 class LinkedList
-  attr_reader :head #can add count
+  attr_reader :head, :count
 
   def initialize
     @head = nil
@@ -15,6 +15,18 @@ class LinkedList
       end
       current_node.next_node = Node.new(data)
     end    
+    data
+  end
+
+  def prepend(data)
+    current_node = @head    
+    if current_node.nil?
+      @head = Node.new(data)
+    else
+      new_node = Node.new(data)
+      new_node.next_node = current_node
+      @head = new_node
+    end
     data
   end
 
