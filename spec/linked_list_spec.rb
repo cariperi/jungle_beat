@@ -16,4 +16,27 @@ describe LinkedList do
       expect(list.head).to eq(nil)
     end
   end
+
+  describe '#append' do
+    it 'adds data to the list' do
+      list = LinkedList.new
+      list.append('doop')
+
+      expect(list.head).not_to eq(nil)
+    end
+
+    it 'creates a new node and assigns it to the head' do
+      list = LinkedList.new
+      list.append('doop')
+
+      expect(list.head).to be_a Node
+      expect(list.head.data).to eq('doop')
+    end
+
+    it 'returns the data that was added to the list' do
+      list = LinkedList.new
+
+      expect(list.append('doop')).to eq('doop')
+    end
+  end
 end
