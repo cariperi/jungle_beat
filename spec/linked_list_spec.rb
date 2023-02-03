@@ -62,8 +62,10 @@ describe LinkedList do
     it 'returns the number of nodes in the list' do
       list = LinkedList.new
       list.append('doop')
+      list.append('deep')
+      list.append('plop')
 
-      expect(list.count).to eq(1)
+      expect(list.count).to eq(3)
     end
   end
 
@@ -71,9 +73,11 @@ describe LinkedList do
     it 'returns a string of all data elements' do
       list = LinkedList.new
       list.append('doop')
+      list.append('deep')
+      list.append('plop')
 
       expect(list.to_string).to be_a String
-      expect(list.to_string).to eq('doop')
+      expect(list.to_string).to eq('doop deep plop')
     end
   end
 end
