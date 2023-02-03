@@ -42,11 +42,11 @@ class LinkedList
 
   def to_string
     current_node = @head
-    data_strings = []
+    formatted_string = ""
     until current_node.nil?
-      data_strings << current_node.data
+      formatted_string = formatted_string + "#{current_node.data} "
       current_node = current_node.next_node
     end
-    data_strings.join(" ")
+    formatted_string.strip
   end
 end
