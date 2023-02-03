@@ -39,4 +39,19 @@ describe LinkedList do
       expect(list.append('doop')).to eq('doop')
     end
   end
+
+  describe '#count' do
+    it 'returns 0 if the list is empty' do
+      list = LinkedList.new
+
+      expect(list.count).to eq(0)
+    end
+
+    it 'returns the number of nodes in the list' do
+      list = LinkedList.new
+      list.append('doop')
+
+      expect(list.count).to eq(1)
+    end
+  end
 end
