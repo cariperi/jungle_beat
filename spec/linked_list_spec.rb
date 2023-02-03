@@ -80,4 +80,33 @@ describe LinkedList do
       expect(list.to_string).to eq('doop deep plop')
     end
   end
+
+  describe '#prepend' do
+    it 'inserts a new node as the head if the list is empty' do
+      list = LinkedList.new
+      list.prepend('dop')
+
+      expect(list.head.data).to eq('dop')
+    end
+
+    it 'adds a new node before existing nodes' do
+      list = LinkedList.new
+      list.append('plop')
+      list.append('suu')
+      list.prepend('dop')
+      list.append('womp')
+      list.prepend('ape')
+
+      expect(list.to_string).to eq('ape dop plop suu womp')
+      expect(list.head.data).to eq('ape')
+      expect(list.head.next_node.data).to eq('dop')
+    end
+
+    it 'returns the data that was added to the list' do
+      list = LinkedList.new
+      list.prepend('dop')
+
+      expect(list.prepend('dop')).to eq('dop')
+    end
+  end
 end
