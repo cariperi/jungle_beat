@@ -70,7 +70,7 @@ describe LinkedList do
   end
 
   describe '#to_string' do
-    it 'returns a string of all data elements' do
+    it 'returns a formatted string of all data elements' do
       list = LinkedList.new
       list.append('doop')
       list.append('deep')
