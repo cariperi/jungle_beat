@@ -1,5 +1,5 @@
 class LinkedList
-  attr_reader :head, :count
+  attr_reader :head
 
   def initialize
     @head = nil
@@ -10,7 +10,7 @@ class LinkedList
     if current_node.nil?
       @head = Node.new(data)
     else
-      while current_node.next_node != nil do
+      while current_node.next_node != nil
         current_node = current_node.next_node
       end
       current_node.next_node = Node.new(data)
@@ -55,9 +55,7 @@ class LinkedList
     if current_node.nil?
       @head = Node.new(data)
     else
-      (position-1).times do 
-        current_node = current_node.next_node
-      end
+      (position-1).times { current_node = current_node.next_node } 
       new_node = Node.new(data)
       new_node.next_node = current_node.next_node
       current_node.next_node = new_node
@@ -68,9 +66,7 @@ class LinkedList
   def find(position, num_elements)
     current_node = @head
     return_string = ""
-    position.times do
-      current_node = current_node.next_node
-    end
+    position.times { current_node = current_node.next_node }
     num_elements.times do
       return_string = return_string + "#{current_node.data} "
       current_node = current_node.next_node
@@ -80,5 +76,15 @@ class LinkedList
 
   def includes?(data)
     to_string.include?(data) ? true : false
+  end
+
+  def pop
+    current_node = @head
+    until current_node.next_node.next_node.nil?
+      current_node = current_node.next_node
+    end
+    removed_data = current_node.next_node.data
+    current_node.next_node = nil
+    removed_data
   end
 end
