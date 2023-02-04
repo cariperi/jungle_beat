@@ -58,4 +58,16 @@ describe JungleBeat do
       expect(jb.count).to eq(6)
     end
   end
+
+  describe 'play' do
+    it 'generates a JungleBeat string but returns nothing' do
+      jb = JungleBeat.new
+      jb.append('deep doo ditt woo hoo shu')
+      
+      expect(jb.play).to eq("")
+    end
+
+    #listen for a sound! 
+
+  end
 end
