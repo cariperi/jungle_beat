@@ -1,0 +1,3 @@
+class JungleBeat
+  
+end
