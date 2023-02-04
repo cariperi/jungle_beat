@@ -109,4 +109,36 @@ describe LinkedList do
       expect(list.prepend('dop')).to eq('dop')
     end
   end
+
+  describe '#insert' do
+    it 'inserts a new node as the head if the list is empty' do
+      list = LinkedList.new
+      list.insert(1, 'woo')
+
+      expect(list.head.data).to eq('woo')
+    end
+
+    it 'adds a new element at a specific position' do
+      list = LinkedList.new
+      list.append('plop')
+      list.append('suu')
+      list.prepend('dop')
+      list.insert(1, 'woo')
+
+      expect(list.to_string).to eq('dop woo plop suu')
+      expect(list.count).to eq(4)
+      expect(list.head.next_node.data).to eq('woo')
+      expect(list.head.next_node.next_node.data).to eq('plop')
+    end
+
+    it 'returns the data that was added to the list' do
+      list = LinkedList.new
+      list.append('plop')
+      list.append('suu')
+      list.prepend('dop')
+      list.insert(1, 'woo')
+
+      expect(list.insert(1, 'woo')).to eq('woo')
+    end
+  end
 end
