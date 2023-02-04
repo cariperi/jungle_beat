@@ -165,4 +165,28 @@ describe LinkedList do
       expect(list.find(1, 3)).to eq('woo shi shu')
     end
   end
+
+  describe '#includes?' do
+    it 'returns true if the given argument is in the list' do
+      list = LinkedList.new
+      list.append('woo')
+      list.append('shi')
+      list.append('shu')
+      list.prepend('deep')
+      list.append('blop')
+
+      expect(list.includes?('deep')).to be true
+    end
+
+    it 'returns false if the given argument is not in the list' do
+      list = LinkedList.new
+      list.append('woo')
+      list.append('shi')
+      list.append('shu')
+      list.prepend('deep')
+      list.append('blop')
+
+      expect(list.includes?('dep')).to be false
+    end
+  end
 end
