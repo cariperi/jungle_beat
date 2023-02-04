@@ -189,4 +189,29 @@ describe LinkedList do
       expect(list.includes?('dep')).to be false
     end
   end
+
+  describe '#pop' do
+    it 'removes the last element from the list' do
+      list = LinkedList.new
+      list.append('woo')
+      list.append('shi')
+      list.append('shu')
+      list.prepend('deep')
+      list.append('blop')
+      2.times {list.pop}
+
+      expect(list.to_string).to eq('deep woo shi')
+    end
+
+    it 'returns the last element from the list' do
+      list = LinkedList.new
+      list.append('woo')
+      list.append('shi')
+      list.append('shu')
+      list.prepend('deep')
+      list.append('blop')
+
+      expect(list.pop).to eq('blop')
+    end
+  end
 end
