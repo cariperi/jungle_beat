@@ -43,4 +43,19 @@ describe JungleBeat do
       expect(jb.list.head).to eq(nil)
     end
   end
+
+  describe '#count' do
+    it 'returns 0 if the list is empty' do
+      jb = JungleBeat.new
+
+      expect(jb.count).to eq(0)
+    end
+
+    it 'returns the number of nodes in the list' do
+      jb = JungleBeat.new
+      jb.append('deep doo ditt woo hoo shu')
+
+      expect(jb.count).to eq(6)
+    end
+  end
 end
