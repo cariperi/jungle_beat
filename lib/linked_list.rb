@@ -64,4 +64,17 @@ class LinkedList
     end
     data
   end
+
+  def find(position, num_elements)
+    current_node = @head
+    return_string = ""
+    position.times do
+      current_node = current_node.next_node
+    end
+    num_elements.times do
+      return_string = return_string + "#{current_node.data} "
+      current_node = current_node.next_node
+    end
+    return_string.strip
+  end
 end
