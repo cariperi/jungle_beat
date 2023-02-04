@@ -18,4 +18,29 @@ describe JungleBeat do
       expect(jb.list.head).to eq(nil)
     end
   end
+
+  describe '#append' do
+    it 'adds seperate nodes to the end of the string' do
+      jb = JungleBeat.new
+      jb.append('deep doo ditt')
+      jb.append('woo hoo shu')
+
+      expect(jb.list.head.data).to eq('deep')
+      expect(jb.list.head.next_node.data).to eq('doo')
+      expect(jb.list.to_string).to eq('deep doo ditt woo hoo shu')
+    end
+
+    it 'returns the original data as a single string' do
+      jb = JungleBeat.new
+
+      expect(jb.append('deep doo ditt')).to eq('deep doo ditt')
+    end
+
+    it 'does nothing if the argument string is empty' do
+      jb = JungleBeat.new
+      jb.append('')
+
+      expect(jb.list.head).to eq(nil)
+    end
+  end
 end
