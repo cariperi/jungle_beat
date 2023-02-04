@@ -77,4 +77,8 @@ class LinkedList
     end
     return_string.strip
   end
+
+  def includes?(data)
+    to_string.include?(data) ? true : false
+  end
 end
