@@ -100,15 +100,21 @@ describe JungleBeat do
     end
   end
 
-  describe 'play' do
+  describe '#play' do
     it 'generates a JungleBeat string but returns nothing' do
       jb = JungleBeat.new
       jb.append('deep doo ditt woo hoo shu')
       
       expect(jb.play).to eq("")
     end
+  end
 
-    #listen for a sound! 
+  describe '#all' do
+    it 'returns a formatted string of all beats' do
+      jb = JungleBeat.new
+      jb.append('deep doo ditt woo hoo shu')
 
+      expect(jb.all).to eq('deep doo ditt woo hoo shu')
+    end
   end
 end
