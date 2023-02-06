@@ -117,6 +117,24 @@ describe JungleBeat do
       expect(jb.all).to eq('deep doo ditt woo hoo shu')
     end
   end
-end
 
-require 'pry'; binding.pry
+  describe '#reset_rate' do
+    it 'resets the rate variable to 500' do
+      jb = JungleBeat.new
+      jb.rate = 100
+      jb.reset_rate
+
+      expect(jb.rate).to eq(500)
+    end
+  end
+
+  describe '#reset_voice' do
+    it 'resets to voice variable to Boing' do
+      jb = JungleBeat.new
+      jb.voice = 'Daniel'
+      jb.reset_voice
+
+      expect(jb.voice).to eq('Boing')
+    end
+  end
+end
