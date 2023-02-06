@@ -101,11 +101,11 @@ describe JungleBeat do
   end
 
   describe '#play' do
-    it 'generates a JungleBeat string but returns nothing' do
+    it 'generates a JungleBeat string and returns number of beats' do
       jb = JungleBeat.new
       jb.append('deep doo ditt woo hoo shu')
       
-      expect(jb.play).to eq("")
+      expect(jb.play).to eq(6)
     end
   end
 
@@ -115,6 +115,26 @@ describe JungleBeat do
       jb.append('deep doo ditt woo hoo shu')
 
       expect(jb.all).to eq('deep doo ditt woo hoo shu')
+    end
+  end
+
+  describe '#reset_rate' do
+    it 'resets the rate variable to 500' do
+      jb = JungleBeat.new
+      jb.rate = 100
+      jb.reset_rate
+
+      expect(jb.rate).to eq(500)
+    end
+  end
+
+  describe '#reset_voice' do
+    it 'resets to voice variable to Boing' do
+      jb = JungleBeat.new
+      jb.voice = 'Daniel'
+      jb.reset_voice
+
+      expect(jb.voice).to eq('Boing')
     end
   end
 end
