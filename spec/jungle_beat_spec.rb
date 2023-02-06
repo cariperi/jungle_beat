@@ -101,11 +101,11 @@ describe JungleBeat do
   end
 
   describe '#play' do
-    it 'generates a JungleBeat string but returns nothing' do
+    it 'generates a JungleBeat string and returns number of beats' do
       jb = JungleBeat.new
       jb.append('deep doo ditt woo hoo shu')
       
-      expect(jb.play).to eq("")
+      expect(jb.play).to eq(6)
     end
   end
 

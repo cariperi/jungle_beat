@@ -37,6 +37,7 @@ class JungleBeat
 
   def play
     `say -r 500 -v Boing #{@list.to_string}`
+    @list.count
   end
 
   def all
