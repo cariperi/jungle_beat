@@ -30,10 +30,11 @@ describe JungleBeat do
       expect(jb.list.to_string).to eq('deep doo ditt woo hoo shu')
     end
 
-    it 'returns the original data as a single string' do
+    it 'returns the number of beats successfully inserted' do
       jb = JungleBeat.new
 
-      expect(jb.append('deep doo ditt')).to eq('deep doo ditt')
+      expect(jb.append('deep doo ditt')).to eq(3)
+      expect(jb.append('deep doo ditt mississippi')).to eq(3)
     end
 
     it 'does nothing if the argument string is empty' do
@@ -41,6 +42,46 @@ describe JungleBeat do
       jb.append('')
 
       expect(jb.list.head).to eq(nil)
+    end
+
+    it 'rejects invalid beats' do
+      jb = JungleBeat.new('deep')
+      
+      expect(jb.append('mississippi')).to eq(0)
+      expect(jb.count).to eq(1)
+    end
+  end
+
+  describe '#prepend' do
+    it 'adds seperate nodes to the beginning of the string' do
+      jb = JungleBeat.new
+      jb.append('deep doo ditt')
+      jb.prepend('woo hoo shu')
+
+      expect(jb.list.head.data).to eq('woo')
+      expect(jb.list.head.next_node.data).to eq('hoo')
+      expect(jb.list.to_string).to eq('woo hoo shu deep doo ditt')
+    end
+
+    it 'returns the number of beats successfully inserted' do
+      jb = JungleBeat.new
+
+      expect(jb.prepend('deep doo ditt')).to eq(3)
+      expect(jb.prepend('deep doo ditt mississippi')).to eq(3)
+    end
+
+    it 'does nothing if the argument string is empty' do
+      jb = JungleBeat.new
+      jb.prepend('')
+
+      expect(jb.list.head).to eq(nil)
+    end
+
+    it 'rejects invalid beats' do
+      jb = JungleBeat.new('deep')
+      
+      expect(jb.prepend('mississippi')).to eq(0)
+      expect(jb.count).to eq(1)
     end
   end
 
@@ -59,15 +100,21 @@ describe JungleBeat do
     end
   end
 
-  describe 'play' do
+  describe '#play' do
     it 'generates a JungleBeat string but returns nothing' do
       jb = JungleBeat.new
       jb.append('deep doo ditt woo hoo shu')
       
       expect(jb.play).to eq("")
     end
+  end
 
-    #listen for a sound! 
+  describe '#all' do
+    it 'returns a formatted string of all beats' do
+      jb = JungleBeat.new
+      jb.append('deep doo ditt woo hoo shu')
 
+      expect(jb.all).to eq('deep doo ditt woo hoo shu')
+    end
   end
 end
