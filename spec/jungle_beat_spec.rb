@@ -30,10 +30,11 @@ describe JungleBeat do
       expect(jb.list.to_string).to eq('deep doo ditt woo hoo shu')
     end
 
-    it 'returns the original data as a single string' do
+    it 'returns the number of beats successfully inserted' do
       jb = JungleBeat.new
 
-      expect(jb.append('deep doo ditt')).to eq('deep doo ditt')
+      expect(jb.append('deep doo ditt')).to eq(3)
+      expect(jb.append('deep doo ditt mississippi')).to eq(3)
     end
 
     it 'does nothing if the argument string is empty' do
@@ -41,6 +42,13 @@ describe JungleBeat do
       jb.append('')
 
       expect(jb.list.head).to eq(nil)
+    end
+
+    it 'rejects invalid beats' do
+      jb = JungleBeat.new
+      jb.append('deep')
+      
+      expect(jb.append('mississippi')).to eq(0)
     end
   end
 
