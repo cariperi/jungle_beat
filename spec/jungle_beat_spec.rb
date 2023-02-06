@@ -52,6 +52,39 @@ describe JungleBeat do
     end
   end
 
+  describe '#prepend' do
+    it 'adds seperate nodes to the beginning of the string' do
+      jb = JungleBeat.new
+      jb.append('deep doo ditt')
+      jb.prepend('woo hoo shu')
+
+      expect(jb.list.head.data).to eq('woo')
+      expect(jb.list.head.next_node.data).to eq('hoo')
+      expect(jb.list.to_string).to eq('woo hoo shu deep doo ditt')
+    end
+
+    it 'returns the number of beats successfully inserted' do
+      jb = JungleBeat.new
+
+      expect(jb.prepend('deep doo ditt')).to eq(3)
+      expect(jb.prepend('deep doo ditt mississippi')).to eq(3)
+    end
+
+    it 'does nothing if the argument string is empty' do
+      jb = JungleBeat.new
+      jb.prepend('')
+
+      expect(jb.list.head).to eq(nil)
+    end
+
+    it 'rejects invalid beats' do
+      jb = JungleBeat.new('deep')
+      
+      expect(jb.prepend('mississippi')).to eq(0)
+      expect(jb.count).to eq(1)
+    end
+  end
+
   describe '#count' do
     it 'returns 0 if the list is empty' do
       jb = JungleBeat.new

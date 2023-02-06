@@ -20,6 +20,17 @@ class JungleBeat
     beats_added
   end
 
+  def prepend(data)
+    beats_added = 0
+    data.split(" ").reverse.each do |data_string|
+      if @valid_beats.include?(data_string)
+        @list.prepend(data_string)
+        beats_added += 1
+      end
+    end
+    beats_added
+  end
+
   def count
     @list.count
   end
