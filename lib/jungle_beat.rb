@@ -1,11 +1,14 @@
 class JungleBeat
   attr_reader :list
+  attr_accessor :rate, :voice
 
   def initialize(data = '')
     @list = LinkedList.new
+    @rate = 500
+    @voice = 'Boing'
     @valid_beats = ['tee', 'dee', 'deep', 'bop', 'boop',
     'la', 'na', 'doo', 'ditt', 'woo', 'hoo',
-    'shu', 'mi', 'ray']
+    'shu', 'mi', 'ray', 'dop']
     self.append(data)
   end
 
@@ -36,7 +39,7 @@ class JungleBeat
   end
 
   def play
-    `say -r 500 -v Boing #{@list.to_string}`
+    `say -r #{@rate} -v #{@voice} #{@list.to_string}`
     @list.count
   end
 

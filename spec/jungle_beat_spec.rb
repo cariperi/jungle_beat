@@ -118,3 +118,5 @@ describe JungleBeat do
     end
   end
 end
+
+require 'pry'; binding.pry
