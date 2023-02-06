@@ -1,11 +1,12 @@
 class JungleBeat
   attr_reader :list
 
-  def initialize
+  def initialize(data = '')
     @list = LinkedList.new
     @valid_beats = ['tee', 'dee', 'deep', 'bop', 'boop',
-                    'la', 'na', 'doo', 'ditt', 'woo', 'hoo',
-                    'shu', 'mi', 'ray']
+    'la', 'na', 'doo', 'ditt', 'woo', 'hoo',
+    'shu', 'mi', 'ray']
+    self.append(data)
   end
 
   def append(data)

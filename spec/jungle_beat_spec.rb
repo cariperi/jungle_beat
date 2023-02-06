@@ -45,10 +45,10 @@ describe JungleBeat do
     end
 
     it 'rejects invalid beats' do
-      jb = JungleBeat.new
-      jb.append('deep')
+      jb = JungleBeat.new('deep')
       
       expect(jb.append('mississippi')).to eq(0)
+      expect(jb.count).to eq(1)
     end
   end
 
