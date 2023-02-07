@@ -127,7 +127,7 @@ describe JungleBeat do
       expect(jb.voice).to eq('Daniel')
     end
 
-    it 'prints an error and keeps voice as-is if chosen voice is invalid' do
+    it 'keeps voice as-is if chosen voice is invalid' do
       jb = JungleBeat.new
       jb.voice=('Caroline')
 

@@ -50,11 +50,8 @@ class JungleBeat
   end
 
   def voice=(voice)
-    if @@valid_voices.include?(voice)
-      @voice = voice
-    else
-      puts 'Sorry! This voice is not valid.'
-    end
+    return unless @@valid_voices.include?(voice)
+    @voice = voice
   end
 
   def reset_rate
