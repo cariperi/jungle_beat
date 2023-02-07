@@ -70,6 +70,10 @@ describe LinkedList do
       expect(@list.to_string).to be_a String
       expect(@list.to_string).to eq('doop deep plop')
     end
+
+    it 'returns an empty string if list is empty' do
+      expect(@list.to_string).to eq('')
+    end
   end
 
   describe '#prepend' do
