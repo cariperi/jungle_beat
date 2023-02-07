@@ -29,6 +29,8 @@ class LinkedList
   end
 
   def to_string
+    return 'Error - this list is empty.' if @head.nil?
+
     current_node = @head
     formatted_string = ''
     until current_node.nil?
@@ -83,10 +85,10 @@ class LinkedList
   end
 
   def pop
+    return 'Sorry! This action cannot be completed.' if @head.nil?
+
     current_node = @head
-    if current_node.nil?
-      return 'Sorry! This action cannot be completed.'
-    elsif current_node.next_node.nil?
+    if current_node.next_node.nil?
       removed_data = current_node.data
       @head = nil
     else

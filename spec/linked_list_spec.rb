@@ -71,8 +71,8 @@ describe LinkedList do
       expect(@list.to_string).to eq('doop deep plop')
     end
 
-    it 'returns an empty string if list is empty' do
-      expect(@list.to_string).to eq('')
+    it 'returns an error message if list is empty' do
+      expect(@list.to_string).to eq('Error - this list is empty.')
     end
   end
 
