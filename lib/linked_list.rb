@@ -10,7 +10,7 @@ class LinkedList
     if current_node.nil?
       @head = Node.new(data)
     else
-      while current_node.next_node != nil
+      until current_node.next_node.nil?
         current_node = current_node.next_node
       end
       current_node.next_node = Node.new(data)
@@ -30,9 +30,9 @@ class LinkedList
 
   def to_string
     current_node = @head
-    formatted_string = ""
+    formatted_string = ''
     until current_node.nil?
-      formatted_string = formatted_string + "#{current_node.data} "
+      formatted_string = formatted_string + current_node.data + ' '
       current_node = current_node.next_node
     end
     formatted_string.strip
@@ -65,13 +65,13 @@ class LinkedList
 
   def find(position, num_elements)
     current_node = @head
-    return_string = ""
+    found_elements = ''
     position.times { current_node = current_node.next_node }
     num_elements.times do
-      return_string = return_string + "#{current_node.data} "
+      found_elements = found_elements + current_node.data + ' '
       current_node = current_node.next_node
     end
-    return_string.strip
+    found_elements.strip
   end
 
   def includes?(data)
