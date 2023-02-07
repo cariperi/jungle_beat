@@ -2,7 +2,8 @@ class JungleBeat
   attr_reader :list, :voice
   attr_accessor :rate
 
-  @@valid_beats = %w[tee dee deep bop boop la na doo ditt woo hoo shu mi ray dop]
+  @@valid_beats = %w[tee dee deep bop boop la na doo ditt woo hoo
+                     shu mi ray dop]
   @@valid_voices = %w[Daniel Boing Kathy Fred Ralph Albert Cellos]
   @@default_voice = 'Boing'
   @@default_rate = 500
@@ -41,6 +42,7 @@ class JungleBeat
   end
 
   def play
+    return 'Sorry, this JungleBeat has no beats!' if @list.count == 0
     `say -r #{@rate} -v #{@voice} #{@list.to_string}`
     @list.count
   end

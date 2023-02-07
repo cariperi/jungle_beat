@@ -108,6 +108,12 @@ describe JungleBeat do
 
       expect(jb.play).to eq(6)
     end
+
+    it 'returns an error message if the JungleBeat has no beats' do
+      jb = JungleBeat.new
+
+      expect(jb.play).to eq('Sorry, this JungleBeat has no beats!')
+    end
   end
 
   describe '#all' do

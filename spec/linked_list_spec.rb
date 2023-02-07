@@ -107,6 +107,7 @@ describe LinkedList do
       @list.insert(1, 'woo')
 
       expect(@list.head.data).to eq('woo')
+      expect(@list.head.next_node).to eq(nil)
     end
 
     it 'adds a new node at a specific position' do
