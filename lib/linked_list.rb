@@ -84,11 +84,16 @@ class LinkedList
 
   def pop
     current_node = @head
-    until current_node.next_node.next_node.nil?
-      current_node = current_node.next_node
+    if current_node.nil?
+      return 'Sorry! This action cannot be completed.'
+    elsif current_node.next_node.nil?
+      removed_data = current_node.data
+      @head = nil
+    else
+      current_node = current_node.next_node until current_node.next_node.next_node.nil?
+      removed_data = current_node.next_node.data
+      current_node.next_node = nil
     end
-    removed_data = current_node.next_node.data
-    current_node.next_node = nil
     removed_data
   end
 end

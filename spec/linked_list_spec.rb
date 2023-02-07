@@ -198,5 +198,17 @@ describe LinkedList do
     it 'returns the last element from the list' do
       expect(@list.pop).to eq('blop')
     end
+
+    it 'resets the head to nil if it removes the only element' do
+      5.times { @list.pop }
+
+      expect(@list.head).to eq(nil)
+    end
+
+    it 'returns an error if the list is empty' do
+      5.times { @list.pop }
+
+      expect(@list.pop).to eq('Sorry! This action cannot be completed.')
+    end
   end
 end
