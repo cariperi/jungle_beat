@@ -18,7 +18,7 @@ class JungleBeat
   def append(data)
     beats_added = 0
     data.split(' ').each do |data_string|
-      if @@valid_beats.include?(data_string)
+      if valid_beat?(data_string)
         @list.append(data_string)
         beats_added += 1
       end
@@ -29,7 +29,7 @@ class JungleBeat
   def prepend(data)
     beats_added = 0
     data.split(' ').reverse.each do |data_string|
-      if @@valid_beats.include?(data_string)
+      if valid_beat?(data_string)
         @list.prepend(data_string)
         beats_added += 1
       end
@@ -62,5 +62,9 @@ class JungleBeat
 
   def reset_voice
     @voice = @@default_voice
+  end
+
+  def valid_beat?(beat)
+    @@valid_beats.include?(beat)
   end
 end
