@@ -24,14 +24,14 @@ describe LinkedList do
       expect(@list.head).not_to eq(nil)
     end
 
-    it 'inserts a new node as the head if list is empty' do
+    it 'inserts a new node with specified data as the head, if list is empty' do
       @list.append('doop')
 
       expect(@list.head).to be_a Node
       expect(@list.head.data).to eq('doop')
     end
 
-    it 'inserts a new node at the end of the list if list is not empty' do
+    it 'inserts a new node with specified data at the end of the list' do
       @list.append('doop')
       @list.append('deep')
       @list.append('plop')
@@ -73,13 +73,13 @@ describe LinkedList do
   end
 
   describe '#prepend' do
-    it 'inserts a new node as the head if the list is empty' do
+    it 'inserts a new node with specified data as the head, if the list is empty' do
       @list.prepend('dop')
 
       expect(@list.head.data).to eq('dop')
     end
 
-    it 'adds a new node before existing nodes' do
+    it 'adds a new node with specified data before existing nodes' do
       @list.append('plop')
       @list.append('suu')
       @list.prepend('dop')
@@ -99,13 +99,13 @@ describe LinkedList do
   end
 
   describe '#insert' do
-    it 'inserts a new node as the head if the list is empty' do
+    it 'inserts a new node with specified data as the head, if the list is empty' do
       @list.insert(1, 'woo')
 
       expect(@list.head.data).to eq('woo')
     end
 
-    it 'adds a new element at a specific position' do
+    it 'adds a new node at a specific position' do
       @list.append('plop')
       @list.append('suu')
       @list.prepend('dop')
@@ -124,6 +124,15 @@ describe LinkedList do
       @list.insert(1, 'woo')
 
       expect(@list.insert(1, 'woo')).to eq('woo')
+    end
+
+    it 'returns an error and does not add node if the position does not exist in the list' do
+      @list.append('plop')
+      @list.append('suu')
+      @list.append('woo')
+
+      expect(@list.insert(4, 'dop')).to eq('Sorry! This action cannot be completed.')
+      expect(@list.count).to eq(3)
     end
   end
 

@@ -14,11 +14,11 @@ class LinkedList
         current_node = current_node.next_node
       end
       current_node.next_node = Node.new(data)
-    end    
+    end
     data
   end
 
-  def count    
+  def count
     counter = 0
     current_node = @head
     until current_node.nil?
@@ -39,7 +39,7 @@ class LinkedList
   end
 
   def prepend(data)
-    current_node = @head    
+    current_node = @head
     if current_node.nil?
       @head = Node.new(data)
     else
@@ -55,7 +55,9 @@ class LinkedList
     if current_node.nil?
       @head = Node.new(data)
     else
-      (position-1).times { current_node = current_node.next_node } 
+      return 'Sorry! This action cannot be completed.' if position > count
+
+      (position-1).times { current_node = current_node.next_node }
       new_node = Node.new(data)
       new_node.next_node = current_node.next_node
       current_node.next_node = new_node
