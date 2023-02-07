@@ -1,15 +1,16 @@
 class JungleBeat
-  attr_reader :list
-  attr_accessor :rate, :voice
+  attr_reader :list, :voice
+  attr_accessor :rate
 
-  @@valid_beats = ['tee', 'dee', 'deep', 'bop', 'boop',
-  'la', 'na', 'doo', 'ditt', 'woo', 'hoo',
-  'shu', 'mi', 'ray', 'dop']
+  @@valid_beats = %w[tee dee deep bop boop la na doo ditt woo hoo shu mi ray dop]
+  @@valid_voices = %w[Daniel Boing Kathy Fred Ralph Albert Cellos]
+  @@default_voice = 'Boing'
+  @@default_rate = 500
 
   def initialize(data = '')
     @list = LinkedList.new
-    @rate = 500
-    @voice = 'Boing'
+    @rate = @@default_rate
+    @voice = @@default_voice
     append(data)
   end
 
@@ -48,11 +49,19 @@ class JungleBeat
     @list.to_string
   end
 
+  def voice=(voice)
+    if @@valid_voices.include?(voice)
+      @voice = voice
+    else
+      puts 'Sorry! This voice is not valid.'
+    end
+  end
+
   def reset_rate
-    @rate = 500
+    @rate = @@default_rate
   end
 
   def reset_voice
-    @voice = 'Boing'
+    @voice = @@default_voice
   end
 end
