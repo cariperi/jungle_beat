@@ -24,14 +24,14 @@ describe LinkedList do
       expect(@list.head).not_to eq(nil)
     end
 
-    it 'inserts a new node as the head if list is empty' do
+    it 'inserts a new node with specified data as the head, if list is empty' do
       @list.append('doop')
 
       expect(@list.head).to be_a Node
       expect(@list.head.data).to eq('doop')
     end
 
-    it 'inserts a new node at the end of the list if list is not empty' do
+    it 'inserts a new node with specified data at the end of the list' do
       @list.append('doop')
       @list.append('deep')
       @list.append('plop')
@@ -70,16 +70,20 @@ describe LinkedList do
       expect(@list.to_string).to be_a String
       expect(@list.to_string).to eq('doop deep plop')
     end
+
+    it 'returns an error message if list is empty' do
+      expect(@list.to_string).to eq('Error - this list is empty.')
+    end
   end
 
   describe '#prepend' do
-    it 'inserts a new node as the head if the list is empty' do
+    it 'inserts a new node with specified data as the head, if the list is empty' do
       @list.prepend('dop')
 
       expect(@list.head.data).to eq('dop')
     end
 
-    it 'adds a new node before existing nodes' do
+    it 'adds a new node with specified data before existing nodes' do
       @list.append('plop')
       @list.append('suu')
       @list.prepend('dop')
@@ -99,13 +103,14 @@ describe LinkedList do
   end
 
   describe '#insert' do
-    it 'inserts a new node as the head if the list is empty' do
+    it 'inserts a new node with specified data as the head, if the list is empty' do
       @list.insert(1, 'woo')
 
       expect(@list.head.data).to eq('woo')
+      expect(@list.head.next_node).to eq(nil)
     end
 
-    it 'adds a new element at a specific position' do
+    it 'adds a new node at a specific position' do
       @list.append('plop')
       @list.append('suu')
       @list.prepend('dop')
@@ -125,6 +130,15 @@ describe LinkedList do
 
       expect(@list.insert(1, 'woo')).to eq('woo')
     end
+
+    it 'returns an error and does not add node if the position does not exist in the list' do
+      @list.append('plop')
+      @list.append('suu')
+      @list.append('woo')
+
+      expect(@list.insert(4, 'dop')).to eq('Sorry! This action cannot be completed.')
+      expect(@list.count).to eq(3)
+    end
   end
 
   describe '#find' do
@@ -136,12 +150,16 @@ describe LinkedList do
       @list.append('blop')
     end
 
-    it 'returns an element from a specific position as a string' do
+    it 'returns an element from a specified position as a string' do
       expect(@list.find(2, 1)).to eq('shi')
     end
 
-    it 'returns more than one element if given an argument > 1' do
+    it 'returns the number of elements specified by argument' do
       expect(@list.find(1, 3)).to eq('woo shi shu')
+    end
+
+    it 'returns an error if the position does not exist in the list' do
+      expect(@list.find(5, 1)).to eq('Sorry! This action cannot be completed.')
     end
   end
 
@@ -180,6 +198,18 @@ describe LinkedList do
 
     it 'returns the last element from the list' do
       expect(@list.pop).to eq('blop')
+    end
+
+    it 'resets the head to nil if it removes the only element' do
+      5.times { @list.pop }
+
+      expect(@list.head).to eq(nil)
+    end
+
+    it 'returns an error if the list is empty' do
+      5.times { @list.pop }
+
+      expect(@list.pop).to eq('Sorry! This action cannot be completed.')
     end
   end
 end

@@ -14,11 +14,11 @@ class LinkedList
         current_node = current_node.next_node
       end
       current_node.next_node = Node.new(data)
-    end    
+    end
     data
   end
 
-  def count    
+  def count
     counter = 0
     current_node = @head
     until current_node.nil?
@@ -29,6 +29,8 @@ class LinkedList
   end
 
   def to_string
+    return 'Error - this list is empty.' if @head.nil?
+
     current_node = @head
     formatted_string = ''
     until current_node.nil?
@@ -39,7 +41,7 @@ class LinkedList
   end
 
   def prepend(data)
-    current_node = @head    
+    current_node = @head
     if current_node.nil?
       @head = Node.new(data)
     else
@@ -55,7 +57,9 @@ class LinkedList
     if current_node.nil?
       @head = Node.new(data)
     else
-      (position-1).times { current_node = current_node.next_node } 
+      return 'Sorry! This action cannot be completed.' if position > count
+
+      (position-1).times { current_node = current_node.next_node }
       new_node = Node.new(data)
       new_node.next_node = current_node.next_node
       current_node.next_node = new_node
@@ -64,6 +68,8 @@ class LinkedList
   end
 
   def find(position, num_elements)
+    return 'Sorry! This action cannot be completed.' if position > count-1
+
     current_node = @head
     found_elements = ''
     position.times { current_node = current_node.next_node }
@@ -79,12 +85,17 @@ class LinkedList
   end
 
   def pop
+    return 'Sorry! This action cannot be completed.' if @head.nil?
+
     current_node = @head
-    until current_node.next_node.next_node.nil?
-      current_node = current_node.next_node
+    if current_node.next_node.nil?
+      removed_data = current_node.data
+      @head = nil
+    else
+      current_node = current_node.next_node until current_node.next_node.next_node.nil?
+      removed_data = current_node.next_node.data
+      current_node.next_node = nil
     end
-    removed_data = current_node.next_node.data
-    current_node.next_node = nil
     removed_data
   end
 end
