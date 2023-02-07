@@ -139,6 +139,13 @@ describe LinkedList do
       expect(@list.insert(4, 'dop')).to eq('Sorry! This action cannot be completed.')
       expect(@list.count).to eq(3)
     end
+
+    it 'returns an error and does not add node if the position given is negative' do
+      @list.append('plop')
+
+      expect(@list.insert(-1, 'dop')).to eq('Sorry! This action cannot be completed.')
+      expect(@list.count).to eq(1)
+    end
   end
 
   describe '#find' do

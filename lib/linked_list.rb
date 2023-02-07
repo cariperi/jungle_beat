@@ -57,7 +57,7 @@ class LinkedList
     if current_node.nil?
       @head = Node.new(data)
     else
-      return 'Sorry! This action cannot be completed.' if position > count
+      return 'Sorry! This action cannot be completed.' if position > count || position < 0
 
       (position-1).times { current_node = current_node.next_node }
       new_node = Node.new(data)
