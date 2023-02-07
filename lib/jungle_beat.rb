@@ -10,8 +10,8 @@ class JungleBeat
 
   def initialize(data = '')
     @list = LinkedList.new
-    @rate = @@default_rate
     @voice = @@default_voice
+    @rate = @@default_rate
     append(data)
   end
 

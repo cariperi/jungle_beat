@@ -17,6 +17,14 @@ describe JungleBeat do
       expect(@jb.list).to be_a LinkedList
       expect(@jb.list.head).to eq(nil)
     end
+
+    it 'has a default voice' do
+      expect(@jb.voice).to eq('Boing')
+    end
+
+    it 'has a default rate' do
+      expect(@jb.rate).to eq(500)
+    end
   end
 
   describe '#append' do
