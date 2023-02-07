@@ -119,8 +119,24 @@ describe JungleBeat do
     end
   end
 
+  describe '#voice=' do
+    it 'changes the voice if chosen voice is valid' do
+      jb = JungleBeat.new
+      jb.voice=('Daniel')
+
+      expect(jb.voice).to eq('Daniel')
+    end
+
+    it 'prints an error and keeps voice as-is if chosen voice is invalid' do
+      jb = JungleBeat.new
+      jb.voice=('Caroline')
+
+      expect(jb.voice).to eq('Boing')
+    end
+  end
+
   describe '#reset_rate' do
-    it 'resets the rate variable to 500' do
+    it 'resets the rate to 500' do
       jb = JungleBeat.new
       jb.rate = 100
       jb.reset_rate
@@ -130,7 +146,7 @@ describe JungleBeat do
   end
 
   describe '#reset_voice' do
-    it 'resets to voice variable to Boing' do
+    it 'resets to voice to Boing' do
       jb = JungleBeat.new
       jb.voice = 'Daniel'
       jb.reset_voice
