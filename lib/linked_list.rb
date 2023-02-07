@@ -69,6 +69,7 @@ class LinkedList
 
   def find(position, num_elements)
     return 'Sorry! This action cannot be completed.' if position > count-1 || position < 0
+    return 'Sorry! Try again with fewer elements.' if num_elements > (count - position)
 
     current_node = @head
     found_elements = ''

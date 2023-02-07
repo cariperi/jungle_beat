@@ -172,6 +172,10 @@ describe LinkedList do
     it 'returns an error if the position given is negative' do
       expect(@list.find(-3, 1)).to eq('Sorry! This action cannot be completed.')
     end
+
+    it 'returns an error if the number of elements requested is invalid' do
+      expect(@list.find(1, 5)).to eq('Sorry! Try again with fewer elements.')
+    end
   end
 
   describe '#includes?' do
