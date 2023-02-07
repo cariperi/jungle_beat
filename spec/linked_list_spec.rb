@@ -194,6 +194,12 @@ describe LinkedList do
     it 'returns false if the given argument is not in the list' do
       expect(@list.includes?('dep')).to be false
     end
+
+    it 'returns false if the list is empty' do
+      5.times { @list.pop }
+
+      expect(@list.includes?('deep')).to be false
+    end
   end
 
   describe '#pop' do
