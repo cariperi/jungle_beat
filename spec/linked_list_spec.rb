@@ -161,6 +161,10 @@ describe LinkedList do
     it 'returns an error if the position does not exist in the list' do
       expect(@list.find(5, 1)).to eq('Sorry! This action cannot be completed.')
     end
+
+    it 'returns an error if the position given is negative' do
+      expect(@list.find(-3, 1)).to eq('Sorry! This action cannot be completed.')
+    end
   end
 
   describe '#includes?' do
