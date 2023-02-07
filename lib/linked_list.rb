@@ -66,6 +66,8 @@ class LinkedList
   end
 
   def find(position, num_elements)
+    return 'Sorry! This action cannot be completed.' if position > count-1
+
     current_node = @head
     found_elements = ''
     position.times { current_node = current_node.next_node }

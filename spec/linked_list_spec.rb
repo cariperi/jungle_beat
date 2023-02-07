@@ -156,6 +156,10 @@ describe LinkedList do
     it 'returns the number of elements specified by argument' do
       expect(@list.find(1, 3)).to eq('woo shi shu')
     end
+
+    it 'returns an error if the position does not exist in the list' do
+      expect(@list.find(5, 1)).to eq('Sorry! This action cannot be completed.')
+    end
   end
 
   describe '#includes?' do
