@@ -149,11 +149,11 @@ describe LinkedList do
       @list.append('blop')
     end
 
-    it 'returns an element from a specific position as a string' do
+    it 'returns an element from a specified position as a string' do
       expect(@list.find(2, 1)).to eq('shi')
     end
 
-    it 'returns more than one element if given an argument > 1' do
+    it 'returns the number of elements specified by argument' do
       expect(@list.find(1, 3)).to eq('woo shi shu')
     end
   end
